@@ -1,3 +1,6 @@
 package domain
 
-class Play(var name: String, var type: String)
+class Play(
+    var name: String,
+    var type: String
+)

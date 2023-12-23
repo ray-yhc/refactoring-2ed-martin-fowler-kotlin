@@ -1,3 +1,6 @@
 package domain
 
-class Performance(var playID: String, var audience: Int)
+class Performance(
+    var playID: String,
+    var audience: Int
+)

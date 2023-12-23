@@ -1,3 +1,6 @@
 package domain
 
-class Invoice(var customer: String, var performances: List<Performance>)
+class Invoice(
+    var customer: String,
+    var performances: List<Performance>
+)

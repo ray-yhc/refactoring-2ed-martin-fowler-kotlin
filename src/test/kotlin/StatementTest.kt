@@ -1,12 +1,12 @@
 import domain.Invoice
 import domain.Performance
 import domain.Play
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
+import io.kotest.core.spec.style.AnnotationSpec
+import io.kotest.matchers.shouldBe
 
-class StatementTest {
+class StatementTest : AnnotationSpec() {
     @Test
-    fun testStatement() {
+    fun `연극 청구 내역을 텍스트 형식으로 출력한다`() {
         // given
         val invoice = Invoice(
             "BigCo",
@@ -34,11 +34,11 @@ class StatementTest {
         val printString = statement(invoice, plays)
 
         // then
-        assertEquals(expected, printString)
+        printString shouldBe expected
     }
 
     @Test
-    fun testHtmlStatement() {
+    fun `연극 청구 내역을 html 형식으로 출력한다`() {
         // given
         val invoice = Invoice(
             "BigCo",
@@ -69,6 +69,6 @@ class StatementTest {
         val printString = htmlStatement(invoice, plays)
 
         // then
-        assertEquals(expected, printString)
+        printString shouldBe expected
     }
 }

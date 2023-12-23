@@ -1,12 +1,11 @@
 import domain.Invoice
-import domain.Performance
 import domain.Play
 
 class Statement
 
-private fun statement(invoice: Invoice, plays: Map<String, Play>): String {
-    var totalAmount : Int = 0
-    var volumeCredit : Int = 0
+fun statement(invoice: Invoice, plays: Map<String, Play>): String {
+    var totalAmount: Int = 0
+    var volumeCredit: Int = 0
     val result = StringBuilder("청구내역 (고객명: ${invoice.customer})\n")
 
     for (performance in invoice.performances) {
@@ -39,11 +38,16 @@ private fun statement(invoice: Invoice, plays: Map<String, Play>): String {
         if (play.type == "comedy") volumeCredit += (performance.audience / 5)
 
         // 청구 내역을 출력한다.
-        result.append("${play.name}: ${thisAmount / 100} ${performance.audience}석\n")
+        result.append("${play.name}: ${String.format("$%.2f", thisAmount / 100.0)} ${performance.audience}석\n")
         totalAmount += thisAmount
     }
 
-    result.append("총액: ${totalAmount / 100}\n")
+    result.append("총액: ${String.format("$%.2f", totalAmount / 100.0)}\n")
     result.append("적립 포인트: $volumeCredit 점")
     return result.toString()
+}
+
+fun htmlStatement(invoice: Invoice, plays: Map<String, Play>): String {
+    // todo: Ch 1.6, p.60 코드 참고
+    return "";
 }
